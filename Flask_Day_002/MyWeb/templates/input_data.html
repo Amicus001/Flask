@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static', filename='css/style_1.css')}}" rel="stylesheet">
+    <title>******MyWeb******</title>
+</head>
+<body>
+    <center>
+        <h1> 🪼DATA Insert🪼</h1>
+        <hr>
+
+        <!-- 데이터 입력 폼 -->
+        <form action="{{ data_action }}" method="{{ data_method }}">
+            <input type="text" name="value" placeholder="value"><br>
+            <input type="text" name="message" placeholder="message"><br>
+            <input type="submit">
+        </form>
+
+        <br><hr><br>
+
+        <!-- 파일 업로드 폼 -->
+        <form action="/upload_file" method="post" enctype="multipart/form-data">
+            <label for="file">💎UPLOAD FILE💎</label>
+            <input type="file" id="file" name="file" required><br><br>
+
+            <label for="image">💎UPLOAD IMG💎</label>
+            <input type="file" id="image" name="image" accept="image/jpeg, image/png" required><br><br>
+
+            <label for="category">Choose method:</label>
+            <select id="category" name="category">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+            </select><br><br>
+
+            <input type="submit" value="Upload">
+        </form>
+
+        <br><hr><br>
+
+        <!-- 파일 다운로드 링크 -->
+        {% if filename %}
+            <a href="{{ url_for('download_file', filename=filename) }}">Download File</a>
+        {% endif %}
+
+        <!-- 이미지 표시 -->
+        <img src="../static/image/jellyfish.png" alt="jellyfishimage">
+    </center>
+</body>
+</html>

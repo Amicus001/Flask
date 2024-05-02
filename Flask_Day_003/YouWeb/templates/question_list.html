@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+</head>
+<body>
+    <h2>Questions</h2> <hr>
+    {% if question_list%}
+    <ul>
+        {% for question in question_list%}
+        <li>
+            <a href="/detail/{{question.id}}"/>{{question.subject}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No Question</p>
+    {% endif %}
+</body>
+</html>
